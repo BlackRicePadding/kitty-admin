@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.louis.kitty.admin.dao.BackPeopleDataMapper">
+
+  <resultMap id="BaseResultMap" type="com.louis.kitty.admin.model.BackPeopleData">
+	<id column="id" jdbcType="INTEGER" property="id" />
+	<result column="objid" jdbcType="VARCHAR" property="objid" />
+	<result column="followid" jdbcType="VARCHAR" property="followid" />
+	<result column="peopleid" jdbcType="VARCHAR" property="peopleid" />
+	<result column="hobjectid" jdbcType="VARCHAR" property="hobjectid" />
+	<result column="content" jdbcType="LONGVARCHAR" property="content" />
+	<result column="addtime" jdbcType="TIMESTAMP" property="addtime" />
+	<result column="falg" jdbcType="VARCHAR" property="falg" />
+	<result column="remarks" jdbcType="VARCHAR" property="remarks" />
+  </resultMap>
+  
+  <insert id="add" parameterType="com.louis.kitty.admin.model.BackPeopleData">
+    insert into back_people_data
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="objid != null">
+        objid,
+      </if>
+      <if test="followid != null">
+        followid,
+      </if>
+      <if test="peopleid != null">
+        peopleid,
+      </if>
+      <if test="hobjectid != null">
+        hobjectid,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="addtime != null">
+        addtime,
+      </if>
+      <if test="falg != null">
+        falg,
+      </if>
+      <if test="remarks != null">
+        remarks,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="objid != null">
+        #{objid,jdbcType=VARCHAR},
+      </if>
+      <if test="followid != null">
+        #{followid,jdbcType=VARCHAR},
+      </if>
+      <if test="peopleid != null">
+        #{peopleid,jdbcType=VARCHAR},
+      </if>
+      <if test="hobjectid != null">
+        #{hobjectid,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="addtime != null">
+        #{addtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="falg != null">
+        #{falg,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null">
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+  <delete id="delete" parameterType="java.lang.Integer">
+    delete from back_people_data
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  
+  <update id="update" parameterType="com.louis.kitty.admin.model.BackPeopleData">
+    update back_people_data
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="objid != null">
+        objid = #{objid,jdbcType=VARCHAR},
+      </if>
+      <if test="followid != null">
+        followid = #{followid,jdbcType=VARCHAR},
+      </if>
+      <if test="peopleid != null">
+        peopleid = #{peopleid,jdbcType=VARCHAR},
+      </if>
+      <if test="hobjectid != null">
+        hobjectid = #{hobjectid,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="addtime != null">
+        addtime = #{addtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="falg != null">
+        falg = #{falg,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null">
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="findById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select * from back_people_data
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  
+  <select id="findPage" resultMap="BaseResultMap">
+    select * from back_people_data
+  </select>
+  
+</mapper>

@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.louis.kitty.admin.dao.ResearchPeopleMapper">
+
+    <resultMap id="BaseResultMap" type="com.louis.kitty.admin.model.ResearchPeople">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="sex" jdbcType="VARCHAR" property="sex"/>
+        <result column="age" jdbcType="VARCHAR" property="age"/>
+        <result column="xt_num" jdbcType="VARCHAR" property="xtNum"/>
+        <result column="yj_num" jdbcType="VARCHAR" property="yjNum"/>
+        <result column="zy_num" jdbcType="VARCHAR" property="zyNum"/>
+        <result column="mz_num" jdbcType="VARCHAR" property="mzNum"/>
+        <result column="flow_id" jdbcType="VARCHAR" property="flowId"/>
+        <result column="flow_content" jdbcType="VARCHAR" property="flowContent"/>
+        <result column="addtime" jdbcType="TIMESTAMP" property="addtime"/>
+        <result column="falg" jdbcType="VARCHAR" property="falg"/>
+        <result column="remarks" jdbcType="VARCHAR" property="remarks"/>
+        <result column="remarks_one" jdbcType="VARCHAR" property="remarksOne"/>
+        <result column="research_id" jdbcType="VARCHAR" property="researchId"/>
+    </resultMap>
+
+    <insert id="add" parameterType="com.louis.kitty.admin.model.ResearchPeople">
+        insert into research_people
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="name != null">
+                name,
+            </if>
+            <if test="sex != null">
+                sex,
+            </if>
+            <if test="age != null">
+                age,
+            </if>
+            <if test="xtNum != null">
+                xt_num,
+            </if>
+            <if test="yjNum != null">
+                yj_num,
+            </if>
+            <if test="zyNum != null">
+                zy_num,
+            </if>
+            <if test="mzNum != null">
+                mz_num,
+            </if>
+            <if test="flowId != null">
+                flow_id,
+            </if>
+            <if test="flowContent != null">
+                flow_content,
+            </if>
+            <if test="addtime != null">
+                addtime,
+            </if>
+            <if test="falg != null">
+                falg,
+            </if>
+            <if test="remarks != null">
+                remarks,
+            </if>
+            <if test="remarksOne != null">
+                remarks_one,
+            </if>
+            <if test="researchId != null">
+                research_id,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="sex != null">
+                #{sex,jdbcType=VARCHAR},
+            </if>
+            <if test="age != null">
+                #{age,jdbcType=VARCHAR},
+            </if>
+            <if test="xtNum != null">
+                #{xtNum,jdbcType=VARCHAR},
+            </if>
+            <if test="yjNum != null">
+                #{yjNum,jdbcType=VARCHAR},
+            </if>
+            <if test="zyNum != null">
+                #{zyNum,jdbcType=VARCHAR},
+            </if>
+            <if test="mzNum != null">
+                #{mzNum,jdbcType=VARCHAR},
+            </if>
+            <if test="flowId != null">
+                #{flowId,jdbcType=VARCHAR},
+            </if>
+            <if test="flowContent != null">
+                #{flowContent,jdbcType=VARCHAR},
+            </if>
+            <if test="addtime != null">
+                #{addtime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="falg != null">
+                #{falg,jdbcType=VARCHAR},
+            </if>
+            <if test="remarks != null">
+                #{remarks,jdbcType=VARCHAR},
+            </if>
+            <if test="remarksOne != null">
+                #{remarksOne,jdbcType=VARCHAR},
+            </if>
+            <if test="researchId != null">
+                #{researchId,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <delete id="delete" parameterType="java.lang.Integer">
+    delete from research_people
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+
+    <update id="update" parameterType="com.louis.kitty.admin.model.ResearchPeople">
+        update research_people
+        <set>
+            <if test="id != null">
+                id = #{id,jdbcType=INTEGER},
+            </if>
+            <if test="name != null">
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="sex != null">
+                sex = #{sex,jdbcType=VARCHAR},
+            </if>
+            <if test="age != null">
+                age = #{age,jdbcType=VARCHAR},
+            </if>
+            <if test="xtNum != null">
+                xt_num = #{xtNum,jdbcType=VARCHAR},
+            </if>
+            <if test="yjNum != null">
+                yj_num = #{yjNum,jdbcType=VARCHAR},
+            </if>
+            <if test="zyNum != null">
+                zy_num = #{zyNum,jdbcType=VARCHAR},
+            </if>
+            <if test="mzNum != null">
+                mz_num = #{mzNum,jdbcType=VARCHAR},
+            </if>
+            <if test="flowId != null">
+                flow_id = #{flowId,jdbcType=VARCHAR},
+            </if>
+            <if test="flowContent != null">
+                flow_content = #{flowContent,jdbcType=VARCHAR},
+            </if>
+            <if test="addtime != null">
+                addtime = #{addtime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="falg != null">
+                falg = #{falg,jdbcType=VARCHAR},
+            </if>
+            <if test="remarks != null">
+                remarks = #{remarks,jdbcType=VARCHAR},
+            </if>
+            <if test="remarksOne != null">
+                remarks_one = #{remarksOne,jdbcType=VARCHAR},
+            </if>
+            <if test="researchId != null">
+                research_id = #{researchId,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <select id="findById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select * from research_people
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+
+    <select id="findPage" resultMap="BaseResultMap">
+      select * from research_people
+    </select>
+
+    <select id="findByFalgPage" resultMap="BaseResultMap" parameterType="com.louis.kitty.admin.model.ResearchPeople">
+        select * from research_people where 1=1 and research_id = #{researchId,jdbcType=VARCHAR}
+        <if test="falg != null">
+            and falg = #{falg,jdbcType=VARCHAR}
+        </if>
+        <if test="limitOne != null">
+            limit #{limitOne},#{limitTwo}
+        </if>
+
+    </select>
+
+    <select id="getTotal" resultType="java.lang.Integer" parameterType="com.louis.kitty.admin.model.ResearchPeople">
+        select count(*) from research_people where 1=1
+        <if test="falg != null">
+            and falg = #{falg,jdbcType=VARCHAR}
+        </if>
+    </select>
+
+</mapper>

@@ -1,0 +1,52 @@
+server:
+  tomcat:
+    uri-encoding: UTF-8
+    max-threads: 1000
+    min-spare-threads: 30
+  port: 8011
+    #context-path: /kitty-admin
+# DataSource
+spring:
+  datasource:
+    name: druidDataSource
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://127.0.0.1:3306/hospital_zf?useUnicode=true&zeroDateTimeBehavior=convertToNull&autoReconnect=true&characterEncoding=utf-8&useSSL=false
+      username: root
+      password: root
+      #filters: stat,wall,log4j,config
+      max-active: 100
+      initial-size: 1
+      max-wait: 60000
+      min-idle: 1
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      validation-query: select 'x'
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: true
+      max-open-prepared-statements: 50
+      max-pool-prepared-statement-per-connection-size: 20
+  # spring boot admin
+  application:
+    name: kitty-admin
+# pagehelper   
+pagehelper:
+    helperDialect: mysql
+    reasonable: true
+    supportMethodsArguments: true
+    params: count=countSql
+# application:
+messager:
+  #图片地址   上传图片文件的路径   #图片地址   上传图片文件的路径    /usr/local/tomcat/webapps/upload/   F:/insertSoft/nginx-1.14.1/html/upload/
+  imagePath: /usr/local/tomcat/webapps/upload/
+  #接口地址    上传的图片的访问路径
+  netWorkPath: http://
+  #图片访问网络地址
+  netWorkPort: :8000
+  #最终图片点击预览时，生成的图片地址
+  yulanPath: /usr/local/tomcat/webapps/yulan/
+  #王健脚本地址
+  coverPath: /usr/local/apache/htdocs/ExtraBaiduServer/BurnprinterServer/convert.sh

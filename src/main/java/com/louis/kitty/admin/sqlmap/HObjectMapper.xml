@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.louis.kitty.admin.dao.HObjectMapper">
+
+    <resultMap id="BaseResultMap" type="com.louis.kitty.admin.model.HObject">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="formName" jdbcType="VARCHAR" property="formname"/>
+        <result column="formCode" jdbcType="VARCHAR" property="formcode"/>
+        <result column="formProperty" jdbcType="LONGVARCHAR" property="formproperty"/>
+        <result column="sort" jdbcType="VARCHAR" property="sort"/>
+        <result column="addTime" jdbcType="TIMESTAMP" property="addtime"/>
+        <result column="sortTime" jdbcType="TIMESTAMP" property="sorttime"/>
+        <result column="updateTime" jdbcType="TIMESTAMP" property="updatetime"/>
+        <result column="remarks" jdbcType="LONGVARCHAR" property="remarks"/>
+        <result column="remarksOne" jdbcType="LONGVARCHAR" property="remarksone"/>
+        <result column="remarksTwo" jdbcType="LONGVARCHAR" property="remarkstwo"/>
+        <result column="remarksThree" jdbcType="LONGVARCHAR" property="remarksthree"/>
+        <result column="content" jdbcType="LONGVARCHAR" property="content"/>
+    </resultMap>
+
+    <insert id="add" parameterType="com.louis.kitty.admin.model.HObject">
+        insert into h_object
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="formname != null">
+                formName,
+            </if>
+            <if test="formcode != null">
+                formCode,
+            </if>
+            <if test="formproperty != null">
+                formProperty,
+            </if>
+            <if test="sort != null">
+                sort,
+            </if>
+            <if test="addtime != null">
+                addTime,
+            </if>
+            <if test="sorttime != null">
+                sortTime,
+            </if>
+            <if test="updatetime != null">
+                updateTime,
+            </if>
+            <if test="remarks != null">
+                remarks,
+            </if>
+            <if test="remarksone != null">
+                remarksOne,
+            </if>
+            <if test="remarkstwo != null">
+                remarksTwo,
+            </if>
+            <if test="remarksthree != null">
+                remarksThree,
+            </if>
+            <if test="content != null">
+                content,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="formname != null">
+                #{formname,jdbcType=VARCHAR},
+            </if>
+            <if test="formcode != null">
+                #{formcode,jdbcType=VARCHAR},
+            </if>
+            <if test="formproperty != null">
+                #{formproperty,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="sort != null">
+                #{sort,jdbcType=VARCHAR},
+            </if>
+            <if test="addtime != null">
+                #{addtime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="sorttime != null">
+                #{sorttime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updatetime != null">
+                #{updatetime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="remarks != null">
+                #{remarks,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="remarksone != null">
+                #{remarksone,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="remarkstwo != null">
+                #{remarkstwo,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="remarksthree != null">
+                #{remarksthree,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="content != null">
+                #{content,jdbcType=LONGVARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <delete id="delete" parameterType="java.lang.Integer">
+    delete from h_object
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+
+    <update id="update" parameterType="com.louis.kitty.admin.model.HObject">
+        update h_object
+        <set>
+            <if test="formname != null">
+                formName = #{formname,jdbcType=VARCHAR},
+            </if>
+            <if test="formcode != null">
+                formCode = #{formcode,jdbcType=VARCHAR},
+            </if>
+            <if test="formproperty != null">
+                formProperty = #{formproperty,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="sort != null">
+                sort = #{sort,jdbcType=VARCHAR},
+            </if>
+            <if test="addtime != null">
+                addTime = #{addtime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="sorttime != null">
+                sortTime = #{sorttime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updatetime != null">
+                updateTime = #{updatetime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="remarks != null">
+                remarks = #{remarks,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="remarksone != null">
+                remarksOne = #{remarksone,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="remarkstwo != null">
+                remarksTwo = #{remarkstwo,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="remarksthree != null">
+                remarksThree = #{remarksthree,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="content != null">
+                content = #{content,jdbcType=LONGVARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <select id="findById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select * from h_object
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+
+    <select id="getCount" parameterType="com.louis.kitty.admin.model.HObject" resultType="java.lang.Integer">
+    select count(*) from h_object
+  </select>
+
+    <select id="findPage" resultMap="BaseResultMap">
+    select * from h_object
+  </select>
+
+</mapper>
